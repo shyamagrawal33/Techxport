@@ -13,8 +13,8 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 const ApiServices = {}
-const API_URL = 'http://3.21.170.188/'
-// const API_URL = 'http://localhost:5000/'
+// const API_URL = 'http://3.21.170.188/'
+const API_URL = 'http://localhost:5000/'
 // const API_URL = 'https://5c75-2409-40d4-2b-911b-2ed7-6d28-4ce5-4205.ngrok-free.app/'
 AuthInterceptor()
 // ApiServices.getList = () => {
@@ -255,4 +255,16 @@ ApiServices.logout = () => {
   localStorage.removeItem('user')
   AuthService.isLoggedIn = false
 }
+
+// Forms endpoints
+ApiServices.getForms = () => {
+  console.log('here')
+  const user = JSON.parse(localStorage.getItem("user"));
+  return axios.get(API_URL + "forms", {
+    headers: {
+      "content-type": "application/json",
+      token: `${user.token}`,
+    },
+  });
+};
 export default ApiServices

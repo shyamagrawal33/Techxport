@@ -130,7 +130,8 @@ function Login() {
           })
           setTimeout(() => {
             if (AuthService.isLoggedIn) {
-              window.location.reload()
+              // window.location.reload()
+              navigate("/default/dashboard");
             }
           }, 1000)
           // window.location.reload()
@@ -300,7 +301,7 @@ function Login() {
                     </InputGroup>
                     <Button
                       block
-                      className='btn btn-primary'
+                      className="btn-round btn2"
                       color="primary"
                       type="button"
                       onClick={() => {

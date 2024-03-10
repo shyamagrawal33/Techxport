@@ -670,8 +670,8 @@ def get_master_data_info_api(jsonData: FilesToBeProcessed, token: str = Header("
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -698,8 +698,8 @@ def get_master_data_info_api(jsonData: FilesToBeProcessed, token: str = Header("
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -721,8 +721,8 @@ def get_master_data_info_api(jsonData: FilesToBeProcessed, token: str = Header("
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -935,8 +935,8 @@ def get_master_data_info_api(jsonData: FilesToBeProcessed, token: str = Header("
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -963,8 +963,8 @@ def get_master_data_info_api(jsonData: FilesToBeProcessed, token: str = Header("
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -986,8 +986,8 @@ def get_master_data_info_api(jsonData: FilesToBeProcessed, token: str = Header("
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -1805,8 +1805,8 @@ def get_unique_field_info_api(jsonData: FilesToBeProcessed, token: str = Header(
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -1833,8 +1833,8 @@ def get_unique_field_info_api(jsonData: FilesToBeProcessed, token: str = Header(
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -1856,8 +1856,8 @@ def get_unique_field_info_api(jsonData: FilesToBeProcessed, token: str = Header(
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -2070,8 +2070,8 @@ def get_unique_field_info_api(jsonData: FilesToBeProcessed, token: str = Header(
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -2098,8 +2098,8 @@ def get_unique_field_info_api(jsonData: FilesToBeProcessed, token: str = Header(
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,
@@ -2121,8 +2121,8 @@ def get_unique_field_info_api(jsonData: FilesToBeProcessed, token: str = Header(
                                 [
                                     {
                                         "id": 2,
-                                        "value": "Text Invoice",
-                                        "label": "Text Invoice"
+                                        "value": "Tax Invoice",
+                                        "label": "Tax Invoice"
                                     },
                                     {
                                         "id": 3,

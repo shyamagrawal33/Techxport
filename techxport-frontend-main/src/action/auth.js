@@ -20,6 +20,8 @@ import {
   COUNTRY_FAIL,
   STATE_SUCCESS,
   STATE_FAIL,
+  FORMS_SUCCESS,
+  FORMS_FAIL
 } from './type'
 import AuthService from 'src/services/auth'
 
@@ -412,3 +414,41 @@ export const resetPassword = (mail, otp, password) => (dispatch) => {
     },
   )
 }
+
+// Forms
+export const getForms = () => (dispatch) => {
+  dispatch({
+    type: SHOW_LOADING,
+  });
+  return ApiServices.getForms().then(
+    (response) => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+      if (response.data.StatusCode == 1) {
+        dispatch({
+          type: FORMS_SUCCESS,
+          payload: response,
+        });
+      }
+    },
+    (error) => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+      const message =
+        (error.response && error.response.data && error.response.data.Status) ||
+        error.message ||
+        error.toString();
+      dispatch({
+        type: FORMS_FAIL,
+      });
+
+      dispatch({
+        type: SET_MESSAGE,
+        payload: message,
+      });
+      return Promise.reject();
+    }
+  );
+};

@@ -14,6 +14,7 @@ import {
   UPDATE_PASSWORD_FAIL,
   DELETE_TEMP,
   COUNTRY_SUCCESS,
+  FORMS_SUCCESS,
 } from '../action/type'
 
 const user = JSON.parse(localStorage.getItem('user'))
@@ -124,6 +125,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         country: payload,
+      }
+    }
+    case FORMS_SUCCESS: {
+      return {
+        ...state,
+        forms: payload,
       }
     }
 

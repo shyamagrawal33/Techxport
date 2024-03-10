@@ -34,7 +34,7 @@ const Export = () => {
   const [shipType, setShipType] = useState([
     {
       id: 1,
-      title: 'Text Invoice',
+      title: 'Tax Invoice',
       checked: false,
     },
     {
@@ -74,8 +74,8 @@ const Export = () => {
         },
         {
           id: 2,
-          value: 'Text Invoice',
-          label: 'Text Invoice',
+          value: 'Tax Invoice',
+          label: 'Tax Invoice',
           data: [
             { field: 'field1' },
             { field: 'field2' },
@@ -117,8 +117,8 @@ const Export = () => {
         },
         {
           id: 2,
-          value: 'Text Invoice',
-          label: 'Text Invoice',
+          value: 'Tax Invoice',
+          label: 'Tax Invoice',
           data: [
             { field: 'field1' },
             { field: 'field2' },
@@ -142,7 +142,7 @@ const Export = () => {
     },
   ]
   const options2 = [
-    { id: 2, value: 'Text Invoice', label: 'Text Invoice' },
+    { id: 2, value: 'Tax Invoice', label: 'Tax Invoice' },
     { id: 3, value: 'Sales Contract', label: 'Sales Contract' },
     { id: 4, value: 'Packing List', label: 'Packing List' },
   ]

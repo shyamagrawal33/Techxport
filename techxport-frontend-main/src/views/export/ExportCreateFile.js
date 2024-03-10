@@ -407,7 +407,7 @@ const ExportCreateFile = () => {
           type: 'select',
           value: '',
           options: [
-            { id: 2, value: 'Text Invoice', label: 'Text Invoice' },
+            { id: 2, value: 'Tax Invoice', label: 'Tax Invoice' },
             { id: 3, value: 'Sales Contract', label: 'Sales Contract' },
             { id: 4, value: 'Packing List', label: 'Packing List' },
           ],
@@ -609,7 +609,7 @@ const ExportCreateFile = () => {
           type: 'select',
           value: '',
           options: [
-            { id: 2, value: 'Text Invoice', label: 'Text Invoice' },
+            { id: 2, value: 'Tax Invoice', label: 'Tax Invoice' },
             { id: 3, value: 'Sales Contract', label: 'Sales Contract' },
             { id: 4, value: 'Packing List', label: 'Packing List' },
           ],
@@ -626,7 +626,7 @@ const ExportCreateFile = () => {
           type: 'select',
           value: '',
           options: [
-            { id: 2, value: 'Text Invoice', label: 'Text Invoice' },
+            { id: 2, value: 'Tax Invoice', label: 'Tax Invoice' },
             { id: 3, value: 'Sales Contract', label: 'Sales Contract' },
             { id: 4, value: 'Packing List', label: 'Packing List' },
           ],
@@ -637,7 +637,7 @@ const ExportCreateFile = () => {
           type: 'select',
           value: '',
           options: [
-            { id: 2, value: 'Text Invoice', label: 'Text Invoice' },
+            { id: 2, value: 'Tax Invoice', label: 'Tax Invoice' },
             { id: 3, value: 'Sales Contract', label: 'Sales Contract' },
             { id: 4, value: 'Packing List', label: 'Packing List' },
           ],
@@ -769,7 +769,7 @@ const ExportCreateFile = () => {
       ],
     },
     {
-      type: 'Text Invoice',
+      type: 'Tax Invoice',
       value: [
         {
           label: 'Exporter',
@@ -830,7 +830,7 @@ const ExportCreateFile = () => {
           type: 'select',
           value: '',
           options: [
-            { id: 2, value: 'Text Invoice', label: 'Text Invoice' },
+            { id: 2, value: 'Tax Invoice', label: 'Tax Invoice' },
             { id: 3, value: 'Sales Contract', label: 'Sales Contract' },
             { id: 4, value: 'Packing List', label: 'Packing List' },
           ],
@@ -847,7 +847,7 @@ const ExportCreateFile = () => {
           type: 'select',
           value: '',
           options: [
-            { id: 2, value: 'Text Invoice', label: 'Text Invoice' },
+            { id: 2, value: 'Tax Invoice', label: 'Tax Invoice' },
             { id: 3, value: 'Sales Contract', label: 'Sales Contract' },
             { id: 4, value: 'Packing List', label: 'Packing List' },
           ],
@@ -858,7 +858,7 @@ const ExportCreateFile = () => {
           type: 'select',
           value: '',
           options: [
-            { id: 2, value: 'Text Invoice', label: 'Text Invoice' },
+            { id: 2, value: 'Tax Invoice', label: 'Tax Invoice' },
             { id: 3, value: 'Sales Contract', label: 'Sales Contract' },
             { id: 4, value: 'Packing List', label: 'Packing List' },
           ],

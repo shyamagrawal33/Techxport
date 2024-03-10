@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import {
   CAvatar,
@@ -53,8 +53,14 @@ import avatar6 from 'src/assets/images/avatars/6.jpg'
 
 import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
+import { useDispatch } from 'react-redux'
+import { getForms } from 'src/action/auth'
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getForms())
+  },[])
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
   const progressExample = [
