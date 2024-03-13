@@ -313,25 +313,24 @@ export default function Contacts() {
           tableStyle={{ minWidth: '50rem' }}
         >
           <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
-          <Column header="View" headerStyle={{ minWidth: '5rem' }} body={viewBodyTemplate}></Column>
+          <Column header="Edit" headerStyle={{ minWidth: '5rem' }} body={viewBodyTemplate}></Column>
           <Column
-            field="logo"
-            header="Logo"
+            field="importer_name"
+            header="Importer Name"
             body={imageBodyTemplate}
             headerStyle={{ minWidth: '7rem' }}
           ></Column>
           <Column
-            field="company_name"
-            header="Company Name"
+            field="importer_address"
+            header="Importer Address"
             headerStyle={{ minWidth: '10rem' }}
           ></Column>
           <Column field="email" header="Email"></Column>
-          <Column field="address" header="Address"></Column>
+          <Column field="contact_no" header="Contact No"></Column>
           <Column field="city" header="City"></Column>
           <Column field="state" header="State"></Column>
-          <Column field="pincode" header="PinCode"></Column>
+          <Column field="pincode" header="Pin/Zip Code"></Column>
           <Column field="country" header="Country"></Column>
-          <Column field="gst_no" header="GST No"></Column>
         </DataTable>
       </div>
     </>

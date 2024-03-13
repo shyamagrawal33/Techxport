@@ -17,7 +17,6 @@ import {
   CForm,
   CFormSelect,
 } from '@coreui/react'
-import { Button } from '@coreui/coreui'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, updateCompany } from 'src/action/auth'
 import AuthService from 'src/services/auth'
@@ -26,6 +25,8 @@ import Select from 'react-select'
 import ApiServices from 'src/services/apiservices'
 import { HIDE_LOADING, LOGOUT, SHOW_LOADING } from 'src/action/type'
 import Common from 'src/services/Common'
+import { Button } from "primereact/button";
+
 const required = (value) => {
   if (!value) {
     return (
@@ -50,15 +51,14 @@ const Company = () => {
   const [companyInfo, setCompanyInfo] = useState({
     email: '',
     company_name: '',
-    iec_code: '',
+    export_import_code: '',
+    gst_tax_reg_no: '',
     mobile: '',
     address: '',
     city: '',
     state: '',
     county: '',
     pincode: '',
-    pancard: '',
-    gstno: '',
   })
   let getData = () => {
     dispatch({
@@ -70,13 +70,9 @@ const Company = () => {
           type: HIDE_LOADING,
         })
         setDataLoad(true)
-        console.log(response)
-        if (response) {
+        console.log({response})
+        if (response?.data?.StatusCode !== 0) {
           if (Common.getErrors(response, dispatch, navigate)) {
-            // response.data.company_detail.county =
-            //   response.data.company_detail.county.charAt(0).toUpperCase() +
-            //   response.data.company_detail.county.substr(1).toLowerCase()
-
             setCompanyInfo(response.data.company_detail)
 
             setTimeout(() => {
@@ -152,106 +148,95 @@ const Company = () => {
       })
   }
   return (
-    <CForm>
+    <CForm className="main-form-row">
       <CRow>
-        <CCol xs={12} lg={6} xl={4}>
-          <CButton
+        <CCol xs={12} lg={12} xl={12}>
+          <Button
             type="submit"
-            color="primary"
             onClick={() => {
-              handleSubmit()
+              handleSubmit();
             }}
+            style={{ float: "right" }}
           >
             Update
-          </CButton>
+          </Button>
         </CCol>
       </CRow>
       <CRow>
         <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>Email</CFormLabel>
+          <CFormLabel>Email*</CFormLabel>
           <CFormInput
             type="text"
             validations={[required]}
             disabled
-            onChange={(e) => setCompanyInfo({ ...companyInfo, ...{ email: e.target.value } })}
+            onChange={(e) =>
+              setCompanyInfo({ ...companyInfo, ...{ email: e.target.value } })
+            }
             value={companyInfo.email}
           ></CFormInput>
 
-          {validate('EMAIL', 'Email', companyInfo.email) != '' && (
+          {validate("EMAIL", "Email", companyInfo.email) != "" && (
             <CFormLabel className="form_field_error">
-              {validate('EMAIL', 'Email', companyInfo.email)}
+              {validate("EMAIL", "Email", companyInfo.email)}
             </CFormLabel>
           )}
         </CCol>
         <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>Company name</CFormLabel>
+          <CFormLabel>Company Name*</CFormLabel>
           <CFormInput
             type="text"
             onChange={(e) =>
-              setCompanyInfo({ ...companyInfo, ...{ company_name: e.target.value } })
+              setCompanyInfo({
+                ...companyInfo,
+                ...{ company_name: e.target.value },
+              })
             }
             value={companyInfo.company_name}
           ></CFormInput>
-          {validate('TEXT', 'Company Name', companyInfo.company_name) != '' && (
+          {validate("TEXT", "Company Name", companyInfo.company_name) != "" && (
             <CFormLabel className="form_field_error">
-              {validate('TEXT', 'Company Name', companyInfo.company_name)}
+              {validate("TEXT", "Company Name", companyInfo.company_name)}
             </CFormLabel>
           )}
         </CCol>
         <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>IEC code</CFormLabel>
+          <CFormLabel>Mobile*</CFormLabel>
           <CFormInput
             type="text"
-            onChange={(e) => setCompanyInfo({ ...companyInfo, ...{ iec_code: e.target.value } })}
-            value={companyInfo.iec_code}
-          ></CFormInput>
-          {validate('NUMBER', 'IEC code', companyInfo.iec_code) != '' && (
-            <CFormLabel className="form_field_error">
-              {validate('NUMBER', 'IEC code', companyInfo.iec_code)}
-            </CFormLabel>
-          )}
-        </CCol>
-        <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>Mobile</CFormLabel>
-          <CFormInput
-            type="text"
-            onChange={(e) => setCompanyInfo({ ...companyInfo, ...{ mobile: e.target.value } })}
+            onChange={(e) =>
+              setCompanyInfo({ ...companyInfo, ...{ mobile: e.target.value } })
+            }
             value={companyInfo.mobile}
           ></CFormInput>
-          {validate('NUMBER', 'Mobile', companyInfo.mobile) != '' && (
+          {validate("NUMBER", "Mobile", companyInfo.mobile) != "" && (
             <CFormLabel className="form_field_error">
-              {validate('NUMBER', 'Mobile', companyInfo.mobile)}
+              {validate("NUMBER", "Mobile", companyInfo.mobile)}
             </CFormLabel>
           )}
         </CCol>
         <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>Address</CFormLabel>
+          <CFormLabel>Address*</CFormLabel>
           <CFormInput
             type="text"
-            onChange={(e) => setCompanyInfo({ ...companyInfo, ...{ address: e.target.value } })}
+            onChange={(e) =>
+              setCompanyInfo({ ...companyInfo, ...{ address: e.target.value } })
+            }
             value={companyInfo.address}
           ></CFormInput>
-          {validate('TEXT', 'Address', companyInfo.address) != '' && (
+          {validate("TEXT", "Address", companyInfo.address) != "" && (
             <CFormLabel className="form_field_error">
-              {validate('TEXT', 'Address', companyInfo.address)}
+              {validate("TEXT", "Address", companyInfo.address)}
             </CFormLabel>
           )}
         </CCol>
         <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>Country</CFormLabel>
-          {/* <CFormSelect aria-label="Default select example" data-coreui-search="true">
-            <option>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3" disabled>
-              Three
-            </option>
-          </CFormSelect> */}
-
+          <CFormLabel>Country*</CFormLabel>
           <Select
             className="basic-single"
             classNamePrefix="select"
-            defaultValue={options.filter((option) => option.value === companyInfo.count)}
+            defaultValue={options.filter(
+              (option) => option.value === companyInfo.count
+            )}
             isDisabled={false}
             isLoading={false}
             isClearable={false}
@@ -259,91 +244,103 @@ const Company = () => {
             isSearchable={true}
             name="color"
             options={options}
-            value={options.filter((option) => option.value === companyInfo.county)}
+            value={options.filter(
+              (option) => option.value === companyInfo.county
+            )}
             onChange={(e) => {
-              setCompanyInfo({ ...companyInfo, ...{ county: e.value } })
+              setCompanyInfo({ ...companyInfo, ...{ county: e.value } });
             }}
           />
-
-          {/* <CFormInput
-            type="text"
-            onChange={(e) => setCompanyInfo({ ...companyInfo, ...{ county: e.target.value } })}
-            value={companyInfo.county}
-          ></CFormInput> */}
-          {validate('TEXT', 'Country', companyInfo.county) != '' && (
+          {validate("TEXT", "Country", companyInfo.county) != "" && (
             <CFormLabel className="form_field_error">
-              {validate('TEXT', 'Country', companyInfo.county)}
+              {validate("TEXT", "Country", companyInfo.county)}
             </CFormLabel>
           )}
         </CCol>
 
         <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>State</CFormLabel>
+          <CFormLabel>State*</CFormLabel>
           <CFormInput
             type="text"
-            onChange={(e) => setCompanyInfo({ ...companyInfo, ...{ state: e.target.value } })}
+            onChange={(e) =>
+              setCompanyInfo({ ...companyInfo, ...{ state: e.target.value } })
+            }
             value={companyInfo.state}
           ></CFormInput>
-          {validate('TEXT', 'State', companyInfo.state) != '' && (
+          {validate("TEXT", "State", companyInfo.state) != "" && (
             <CFormLabel className="form_field_error">
-              {validate('TEXT', 'State', companyInfo.state)}
+              {validate("TEXT", "State", companyInfo.state)}
             </CFormLabel>
           )}
         </CCol>
 
         <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>City</CFormLabel>
+          <CFormLabel>City*</CFormLabel>
           <CFormInput
             type="text"
-            onChange={(e) => setCompanyInfo({ ...companyInfo, ...{ city: e.target.value } })}
+            onChange={(e) =>
+              setCompanyInfo({ ...companyInfo, ...{ city: e.target.value } })
+            }
             value={companyInfo.city}
           ></CFormInput>
-          {validate('TEXT', 'City', companyInfo.city) != '' && (
+          {validate("TEXT", "City", companyInfo.city) != "" && (
             <CFormLabel className="form_field_error">
-              {validate('TEXT', 'City', companyInfo.city)}
+              {validate("TEXT", "City", companyInfo.city)}
             </CFormLabel>
           )}
         </CCol>
 
         <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>Pin code</CFormLabel>
+          <CFormLabel>Pin code*</CFormLabel>
           <CFormInput
             type="text"
-            onChange={(e) => setCompanyInfo({ ...companyInfo, ...{ pincode: e.target.value } })}
+            onChange={(e) =>
+              setCompanyInfo({ ...companyInfo, ...{ pincode: e.target.value } })
+            }
             value={companyInfo.pincode}
           ></CFormInput>
-          {validate('NUMBER', 'Pin code', companyInfo.pincode) != '' && (
+          {validate("NUMBER", "Pin code", companyInfo.pincode) != "" && (
             <CFormLabel className="form_field_error">
-              {validate('NUMBER', 'Pin code', companyInfo.pincode)}
+              {validate("NUMBER", "Pin code", companyInfo.pincode)}
             </CFormLabel>
           )}
         </CCol>
         <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>Pan card</CFormLabel>
+          <CFormLabel>Export Import Code*</CFormLabel>
           <CFormInput
             type="file"
-            onChange={(e) => setCompanyInfo({ ...companyInfo, ...{ pancard: e.target.files[0] } })}
+            onChange={(e) =>
+              setCompanyInfo({
+                ...companyInfo,
+                ...{ export_import_code: e.target.files[0] },
+              })
+            }
           ></CFormInput>
-          {validate('FILE', 'Pan card', companyInfo.pancard) != '' && (
+          {validate("FILE", "Export Import Code", companyInfo.export_import_code) != "" && (
             <CFormLabel className="form_field_error">
-              {validate('FILE', 'Pan card', companyInfo.pancard)}
+              {validate("FILE", "Export Import Code", companyInfo.export_import_code)}
             </CFormLabel>
           )}
         </CCol>
         <CCol xs={12} lg={6} xl={4}>
-          <CFormLabel>Gst No</CFormLabel>
+          <CFormLabel>GST/Tax Registration No*</CFormLabel>
           <CFormInput
             type="file"
-            onChange={(e) => setCompanyInfo({ ...companyInfo, ...{ gstno: e.target.files[0] } })}
+            onChange={(e) =>
+              setCompanyInfo({
+                ...companyInfo,
+                ...{ gst_tax_reg_no: e.target.files[0] },
+              })
+            }
           ></CFormInput>
-          {validate('FILE', 'Gst No', companyInfo.gstno) != '' && (
+          {validate("FILE", "Gst Tax No", companyInfo.gst_tax_reg_no) != "" && (
             <CFormLabel className="form_field_error">
-              {validate('FILE', 'Gst No', companyInfo.gstno)}
+              {validate("FILE", "Gst Tax No", companyInfo.gst_tax_reg_no)}
             </CFormLabel>
           )}
         </CCol>
       </CRow>
     </CForm>
-  )
+  );
 }
 export default Company

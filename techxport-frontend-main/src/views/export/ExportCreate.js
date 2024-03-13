@@ -60,7 +60,7 @@ const ExportCreate = () => {
                 {
                   id: 1,
                   label: 'Edit Document',
-                  procuctId: product.id,
+                  productId: product.id,
                   icon: cilPencil,
                   value: product.value,
                 },
@@ -70,21 +70,21 @@ const ExportCreate = () => {
                 {
                   id: 1,
                   label: 'Edit Document',
-                  procuctId: product.id,
+                  productId: product.id,
                   icon: cilPencil,
                   value: product.value,
                 },
                 {
                   id: 2,
                   label: 'Download',
-                  procuctId: product.id,
+                  productId: product.id,
                   icon: cilArrowThickToBottom,
                   value: product.value,
                 },
                 {
                   id: 3,
                   label: 'Delete',
-                  procuctId: product.id,
+                  productId: product.id,
                   icon: cilTrash,
                   value: product.value,
                 },

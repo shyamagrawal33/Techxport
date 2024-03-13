@@ -1,4 +1,5 @@
 import React from 'react'
+const Settings = React.lazy(() => import("./views/settings/Settings"));
 const Export = React.lazy(() => import('./views/export/Export'))
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
@@ -105,13 +106,14 @@ const routes = [
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
   { path: '/export', name: 'Export', element: Export },
-  { path: '/company', name: 'Comapny', element: Company },
+  { path: '/company', name: 'Company', element: Company },
   { path: '/products', name: 'Products', element: Products },
   { path: '/contacts', name: 'Contacts', element: Contacts },
   { path: '/exportcreate', name: 'Create Export', element: ExportCreate },
   { path: '/exportcreatefile', name: 'Create Export File', element: ExportCreateFile },
   { path: '/productcreate', name: 'Create Product', element: ProductCreate },
   { path: '/createcontact', name: 'Create Contact', element: CreateContacts },
+  { path: '/settings', name: 'Settings', element: Settings }
 ]
 
 export default routes

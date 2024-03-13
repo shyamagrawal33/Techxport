@@ -31,7 +31,7 @@ const DefaultLayout = () => {
       )}
       <AppSidebar />
 
-      <div className="wrapper d-flex flex-column min-vh-100 bg-light wrapper2">
+      <div className="wrapper d-flex flex-column min-vh-100 wrapper2">
         <AppHeader />
         <div className="body flex-grow-1 px-3">
           <AppContent />
