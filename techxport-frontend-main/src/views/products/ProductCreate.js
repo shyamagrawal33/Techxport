@@ -47,9 +47,9 @@ export default function ProductCreate() {
   const [create, setCreate] = useState(true)
   const [newProduct, setNewProduct] = useState({
     id: 0,
-    Hc_code: '',
+    hc_code: '',
     description: '',
-    Unit_of_measurement: '',
+    unit_of_measurement: '',
     number_of_packages: '',
     gross_weight: '',
     net_weight: '',
@@ -134,7 +134,7 @@ export default function ProductCreate() {
             <CForm style={{ borderRadius: 0, boxShadow: 'none', paddingTop: 0 }}>
               <div>
                 <CFormLabel style={{ fontSize: 18, fontWeight: 700, marginTop: 0 }}>
-                  Contact
+                  Product
                 </CFormLabel>
                 <CHeaderDivider
                   style={{
@@ -150,9 +150,9 @@ export default function ProductCreate() {
                   <CFormLabel>HC Code</CFormLabel>
                   <CFormInput
                     type="text"
-                    value={newProduct?.Hc_code}
+                    value={newProduct?.hc_code}
                     onChange={(e) =>
-                      setNewProduct({ ...newProduct, ...{ Hc_code: e.target.value } })
+                      setNewProduct({ ...newProduct, ...{ hc_code: e.target.value } })
                     }
                   ></CFormInput>
                 </CCol>
@@ -171,16 +171,16 @@ export default function ProductCreate() {
                   <CFormInput
                     type="email"
                     onChange={(e) =>
-                      setNewProduct({ ...newProduct, ...{ Unit_of_measurement: e.target.value } })
+                      setNewProduct({ ...newProduct, ...{ unit_of_measurement: e.target.value } })
                     }
-                    value={newProduct?.Unit_of_measurement}
+                    value={newProduct?.unit_of_measurement}
                   ></CFormInput>
                 </CCol>
 
                 <CCol xs={12} lg={6} xl={4}>
                   <CFormLabel>Net weight</CFormLabel>
                   <CFormInput
-                    type="number"
+                    type="text"
                     onChange={(e) =>
                       setNewProduct({ ...newProduct, ...{ net_weight: e.target.value } })
                     }
@@ -202,7 +202,7 @@ export default function ProductCreate() {
                 <CCol xs={12} lg={6} xl={4}>
                   <CFormLabel>Number of Packages</CFormLabel>
                   <CFormInput
-                    type="email"
+                    type="number"
                     onChange={(e) =>
                       setNewProduct({ ...newProduct, ...{ number_of_packages: e.target.value } })
                     }

@@ -37,9 +37,9 @@ export default function Products() {
   const [create, setCreate] = useState(false)
   const [newProduct, setNewProduct] = useState({
     id: 0,
-    Hc_code: '',
+    hc_code: '',
     description: '',
-    Unit_of_measurement: '',
+    unit_of_measurement: '',
     number_of_packages: '',
     gross_weight: '',
     net_weight: '',
@@ -285,9 +285,9 @@ export default function Products() {
         >
           <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
           <Column header="View" headerStyle={{ minWidth: '5rem' }} body={viewBodyTemplate}></Column>
-          <Column field="Hc_code" header="HC Code"></Column>
+          <Column field="hc_code" header="HC Code"></Column>
           <Column field="description" header="Description"></Column>
-          <Column field="Unit_of_measurement" header="Unit of Measurement"></Column>
+          <Column field="unit_of_measurement" header="Unit of Measurement"></Column>
           <Column field="net_weight" header="Net Weight"></Column>
           <Column field="gross_weight" header="Gross Weight"></Column>
           <Column field="number_of_packages" header="Number Of Packages"></Column>

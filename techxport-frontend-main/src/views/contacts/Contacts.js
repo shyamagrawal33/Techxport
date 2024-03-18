@@ -49,8 +49,7 @@ export default function Contacts() {
   })
   const [newContact, setNewContact] = useState({
     id: 0,
-    logo: '',
-    company_name: '',
+    name: '',
     email: '',
     address: '',
     city: '',
@@ -58,8 +57,6 @@ export default function Contacts() {
     pincode: '',
     country: '',
     phone_no: '',
-    gst_no: '',
-    optionalField: [],
   })
 
   let createSearchParams = (type = 'NEW', id = 0, prevdata = null) => {
@@ -315,18 +312,17 @@ export default function Contacts() {
           <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
           <Column header="Edit" headerStyle={{ minWidth: '5rem' }} body={viewBodyTemplate}></Column>
           <Column
-            field="importer_name"
+            field="name"
             header="Importer Name"
-            body={imageBodyTemplate}
             headerStyle={{ minWidth: '7rem' }}
           ></Column>
           <Column
-            field="importer_address"
+            field="address"
             header="Importer Address"
             headerStyle={{ minWidth: '10rem' }}
           ></Column>
           <Column field="email" header="Email"></Column>
-          <Column field="contact_no" header="Contact No"></Column>
+          <Column field="phone_no" header="Contact No"></Column>
           <Column field="city" header="City"></Column>
           <Column field="state" header="State"></Column>
           <Column field="pincode" header="Pin/Zip Code"></Column>

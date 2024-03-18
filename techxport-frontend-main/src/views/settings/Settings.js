@@ -51,6 +51,7 @@ const Settings = () => {
   );
   const [dataLoad, setDataLoad] = useState(false);
   const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState("")
 
   let validate = (type, fieldname, value) => {
     if (dataLoad) {
@@ -89,6 +90,20 @@ const Settings = () => {
           >
             Update
           </Button>
+        </CCol>
+      </CRow>
+      <CRow>
+        <CCol xs={12} lg={6} xl={4}>
+          <CFormLabel>OTP Validation*</CFormLabel>
+          <CFormInput
+            type="otp"
+            validations={[required]}
+            onChange={(e) => setOtp(e.target.value)}
+            value={otp.email}
+          ></CFormInput>
+        </CCol>
+        <CCol xs={4} lg={2} xl={2} className="mt-4">
+          <CButton color="success">Send OTP</CButton>
         </CCol>
       </CRow>
       <CRow>

@@ -73,17 +73,14 @@ ApiServices.deleteData = (id, type) => {
 }
 ApiServices.createContacts = (data) => {
   let formData = new FormData()
+  formData.append('name', data.name)
   formData.append('email', data.email)
-  formData.append('company_name', data.company_name)
   formData.append('phone_no', data.phone_no)
   formData.append('address', data.address)
   formData.append('city', data.city)
   formData.append('state', data.state)
   formData.append('country', data.country)
   formData.append('pincode', data.pincode)
-  formData.append('gst_no', data.gst_no)
-  formData.append('logo', data.logo)
-  if (data.optionalField) formData.append('optionalField', JSON.stringify(data.optionalField))
   const user = JSON.parse(localStorage.getItem('user'))
   return axios.post(API_URL + 'contact/info', formData, {
     headers: {
@@ -96,17 +93,14 @@ ApiServices.createContacts = (data) => {
 ApiServices.updateContact = (data) => {
   let formData = new FormData()
   formData.append('id', data.id)
+  formData.append('name', data.name)
   formData.append('email', data.email)
-  formData.append('company_name', data.company_name)
   formData.append('phone_no', data.phone_no)
   formData.append('address', data.address)
   formData.append('city', data.city)
   formData.append('state', data.state)
   formData.append('country', data.country)
   formData.append('pincode', data.pincode)
-  formData.append('gst_no', data.gst_no)
-  if (typeof data.logo != 'string') formData.append('logo', data.logo)
-  if (data.optionalField) formData.append('optionalField', JSON.stringify(data.optionalField))
   const user = JSON.parse(localStorage.getItem('user'))
   return axios.put(API_URL + 'contact/info', formData, {
     headers: {
@@ -144,9 +138,9 @@ ApiServices.getState = () => {
 }
 ApiServices.createProduct = (data) => {
   let formData = new FormData()
-  formData.append('Hc_code', data.Hc_code)
+  formData.append('hc_code', data.hc_code)
   formData.append('description', data.description)
-  formData.append('Unit_of_measurement', data.Unit_of_measurement)
+  formData.append('unit_of_measurement', data.unit_of_measurement)
   formData.append('net_weight', data.net_weight)
   formData.append('gross_weight', data.gross_weight)
   formData.append('number_of_packages', data.number_of_packages)
@@ -162,9 +156,12 @@ ApiServices.createProduct = (data) => {
 ApiServices.updateProduct = (data) => {
   let formData = new FormData()
   formData.append('id', data.id)
-  formData.append('Hc_code', data.Hc_code)
+  formData.append('hc_code', data.hc_code)
   formData.append('description', data.description)
-  formData.append('Unit_of_measurement', data.Unit_of_measurement)
+  formData.append('unit_of_measurement', data.unit_of_measurement)
+  formData.append('net_weight', data.net_weight)
+  formData.append('gross_weight', data.gross_weight)
+  formData.append('number_of_packages', data.number_of_packages)
   formData.append('optionalField', JSON.stringify(data.optionalField))
   const user = JSON.parse(localStorage.getItem('user'))
   return axios.put(API_URL + 'product/info', formData, {

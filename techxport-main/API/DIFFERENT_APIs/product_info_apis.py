@@ -39,9 +39,12 @@ def get_product_info_api(token: str = Header("token")):
         for j in product_info_details:
             product_detail = {
                 'id': str(j["_id"]),
-                "Hc_code": j['product_data']["Hc_code"],
+                "hc_code": j['product_data']["hc_code"],
                 "description": j['product_data']["description"],
-                "Unit_of_measurement": j['product_data']["Unit_of_measurement"],
+                "unit_of_measurement": j['product_data']["unit_of_measurement"],
+                "net_weight": j['product_data']["net_weight"],
+                "gross_weight": j['product_data']["gross_weight"],
+                "number_of_packages": j['product_data']["number_of_packages"],
                 "optionalField": j['product_data']["optionalField"]
             }
             final_product_list.append(product_detail)
@@ -57,7 +60,7 @@ def get_product_info_api(token: str = Header("token")):
 
 
 @product_info_related_apis_obj.post(product_info_route_path)
-async def create_product_info_api(Hc_code: str = Form(...), description: str = Form(...), Unit_of_measurement: str = Form(...), optionalField: str = Form(...), token: str = Header("token")):
+async def create_product_info_api(hc_code: str = Form(...), description: str = Form(...), unit_of_measurement: str = Form(...), net_weight: str = Form(...), gross_weight: str = Form(...), number_of_packages: int = Form(...), optionalField: str = Form(...), token: str = Header("token")):
 
     token_data = utilities.decode_jwt(token)
     if token_data['StatusCode'] == 0:
@@ -83,9 +86,12 @@ async def create_product_info_api(Hc_code: str = Form(...), description: str = F
             "mail_id": mail_id,
             "product_data":
                 {
-                    "Hc_code": Hc_code,
+                    "hc_code": hc_code,
                     "description": description,
-                    "Unit_of_measurement": Unit_of_measurement,
+                    "unit_of_measurement": unit_of_measurement,
+                    "net_weight": net_weight,
+                    "gross_weight": gross_weight,
+                    "number_of_packages": number_of_packages,
                     "optionalField": optionalField
                 }
         }
@@ -104,7 +110,7 @@ async def create_product_info_api(Hc_code: str = Form(...), description: str = F
 
 
 @product_info_related_apis_obj.put(product_info_route_path)
-async def update_product_info_api(id: str = Form(...), Hc_code: str = Form(...), description: str = Form(...), Unit_of_measurement: str = Form(...), optionalField: str = Form(...), token: str = Header("token")):
+async def update_product_info_api(id: str = Form(...), hc_code: str = Form(...), description: str = Form(...), unit_of_measurement: str = Form(...), net_weight: str = Form(...), gross_weight: str = Form(...), number_of_packages: int = Form(...), optionalField: str = Form(...), token: str = Header("token")):
 
     token_data = utilities.decode_jwt(token)
     if token_data['StatusCode'] == 0:
@@ -127,9 +133,12 @@ async def update_product_info_api(id: str = Form(...), Hc_code: str = Form(...),
 
         # Dynamic JSON data to be saved (without an explicit _id field)
         only_product_data = {
-            "Hc_code": Hc_code,
+            "hc_code": hc_code,
             "description": description,
-            "Unit_of_measurement": Unit_of_measurement,
+            "unit_of_measurement": unit_of_measurement,
+            "net_weight": net_weight,
+            "gross_weight": gross_weight,
+            "number_of_packages": number_of_packages,
             "optionalField": optionalField
         }
 

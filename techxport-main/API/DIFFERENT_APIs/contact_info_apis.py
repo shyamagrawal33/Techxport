@@ -42,7 +42,7 @@ def get_contact_info_api(token: str = Header("token")):
         for j in contact_info_details:
             company_detail = {
                 'id': str(j["_id"]),
-                "company_name": j['contact_data']["company_name"],
+                "name": j['contact_data']["name"],
                 "email": j['contact_data']["email"],
                 "address": j['contact_data']["address"],
                 "city": j['contact_data']["city"],
@@ -50,9 +50,6 @@ def get_contact_info_api(token: str = Header("token")):
                 "pincode": j['contact_data']["pincode"],
                 "country": j['contact_data']["country"],
                 "phone_no": j['contact_data']["phone_no"],
-                "logo": j['contact_data']["logo"],
-                "gst_no": j['contact_data']["gst_no"],
-                "optionalField": j['contact_data']["optionalField"]
             }
             final_contact_list.append(company_detail)
         return {
@@ -67,17 +64,16 @@ def get_contact_info_api(token: str = Header("token")):
 
 
 @contact_info_related_apis_obj.post(contact_info_route_path)
-async def create_contact_info_api(company_name: str = Form(...), email: str = Form(...), phone_no: str = Form(...), address: str = Form(...), city: str = Form(...), state: str = Form(...), country: str = Form(...), pincode: str = Form(...), optionalField: str = Form(...), gst_no: str = Form(...), logo: UploadFile = File(...), token: str = Header("token")):
-
+async def create_contact_info_api(name: str = Form(...), email: str = Form(...), phone_no: str = Form(...), address: str = Form(...), city: str = Form(...), state: str = Form(...), country: str = Form(...), pincode: str = Form(...), token: str = Header("token")):
+    print('hiii')
     token_data = utilities.decode_jwt(token)
     if token_data['StatusCode'] == 0:
         return token_data
 
+    print(token_data)
     mail_id = token_data["user_mail_id"]
 
     username = mail_id.split('@')[0].strip()
-
-    print(optionalField)
 
     client = pymongo.MongoClient(mongo_uri)
     db = client["techxport"]
@@ -123,7 +119,7 @@ async def create_contact_info_api(company_name: str = Form(...), email: str = Fo
             "mail_id": mail_id,
             "contact_data":
                 {
-                    "company_name": company_name,
+                    "name": name,
                     "email": email,
                     "address": address,
                     "city": city,
@@ -131,9 +127,6 @@ async def create_contact_info_api(company_name: str = Form(...), email: str = Fo
                     "pincode": pincode,
                     "country": country,
                     "phone_no": phone_no,
-                    "logo": aws_logo_doc_path,
-                    "gst_no": gst_no,
-                    "optionalField": optionalField
                 }
         }
         # exit()
@@ -154,7 +147,7 @@ async def create_contact_info_api(company_name: str = Form(...), email: str = Fo
 
 
 @contact_info_related_apis_obj.put(contact_info_route_path)
-async def update_contact_info_api(id: str = Form(...), company_name: str = Form(...), email: str = Form(...), phone_no: str = Form(...), address: str = Form(...), city: str = Form(...), state: str = Form(...), country: str = Form(...), pincode: str = Form(...), optionalField: str = Form(...), gst_no: str = Form(...), logo: UploadFile = File(None), token: str = Header("token")):
+async def update_contact_info_api(id: str = Form(...), name: str = Form(...), email: str = Form(...), phone_no: str = Form(...), address: str = Form(...), city: str = Form(...), state: str = Form(...), country: str = Form(...), pincode: str = Form(...), token: str = Header("token")):
 
     token_data = utilities.decode_jwt(token)
     if token_data['StatusCode'] == 0:
@@ -208,7 +201,7 @@ async def update_contact_info_api(id: str = Form(...), company_name: str = Form(
             "mail_id": mail_id,
             "contact_data":
                 {
-                    "company_name": company_name,
+                    "name": name,
                     "email": email,
                     "address": address,
                     "city": city,
@@ -216,9 +209,6 @@ async def update_contact_info_api(id: str = Form(...), company_name: str = Form(
                     "pincode": pincode,
                     "country": country,
                     "phone_no": phone_no,
-                    "logo": aws_logo_doc_path,
-                    "gst_no": gst_no,
-                    "optionalField": optionalField
                 }
         }
 

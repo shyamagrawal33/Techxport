@@ -27,6 +27,7 @@ def get_company_info_api(token: str = Header("token")):
         return token_data
 
     mail_id = token_data["user_mail_id"]
+    
     client = pymongo.MongoClient(mongo_uri)
     db = client["techxport"]
 

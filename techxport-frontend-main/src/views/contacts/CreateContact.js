@@ -38,15 +38,14 @@ export default function CreateContact() {
   const navigate = useNavigate();
   const search = useLocation().search;
   const data = JSON.parse(atob(search.substring(1)));
-  console.log(data);
+  console.log("this is data", data);
   useEffect(() => {
     if (data.prevdata) setNewContact(data.prevdata);
   }, []);
   const [create, setCreate] = useState(true);
   const [newContact, setNewContact] = useState({
     id: 0,
-    logo: "",
-    company_name: "",
+    name: "",
     email: "",
     address: "",
     city: "",
@@ -54,8 +53,6 @@ export default function CreateContact() {
     pincode: "",
     country: "",
     phone_no: "",
-    gst_no: "",
-    optionalField: [],
   });
 
   let createNewContact = (newContact) => {
@@ -84,6 +81,7 @@ export default function CreateContact() {
     dispatch({
       type: SHOW_LOADING,
     });
+    console.log('newwwwww', newContact)
     ApiServices.updateContact(newContact)
       .then((response) => {
         dispatch({
@@ -151,10 +149,10 @@ export default function CreateContact() {
                     onChange={(e) =>
                       setNewContact({
                         ...newContact,
-                        ...{ importer_name: e.target.value },
+                        ...{ name: e.target.value },
                       })
                     }
-                    value={newContact.importer_name}
+                    value={newContact.name}
                   ></CFormInput>
                 </CCol>
                 <CCol xs={12} lg={6} xl={4}>
@@ -164,10 +162,10 @@ export default function CreateContact() {
                     onChange={(e) =>
                       setNewContact({
                         ...newContact,
-                        ...{ importer_address: e.target.value },
+                        ...{ address: e.target.value },
                       })
                     }
-                    value={newContact.importer_address}
+                    value={newContact.address}
                   ></CFormTextarea>
                 </CCol>
                 <CCol xs={12} lg={6} xl={4}>
