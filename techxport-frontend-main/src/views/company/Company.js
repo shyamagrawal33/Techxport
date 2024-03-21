@@ -27,8 +27,8 @@ import { HIDE_LOADING, LOGOUT, SHOW_LOADING } from 'src/action/type'
 import Common from 'src/services/Common'
 import { Button } from "primereact/button";
 
-const required = (value) => {
-  if (!value) {
+const required = (value, visible) => {
+  if (!value && visible) {
     return (
       <div className="alert alert-danger" role="alert">
         This field is required!
@@ -57,7 +57,7 @@ const Company = () => {
     address: '',
     city: '',
     state: '',
-    county: '',
+    country: '',
     pincode: '',
   })
   let getData = () => {
@@ -89,7 +89,7 @@ const Company = () => {
     getData()
   }, [])
   let validate = (type, fieldname, value) => {
-    if (dataLoad) {
+    if (dataLoad && visible) {
       if ((type = 'TEXT' && value == '')) {
         return fieldname + ' field is required'
       } else if (type == 'EMAIL') {
@@ -128,6 +128,7 @@ const Company = () => {
     }
   }, [isInvalidToken, UpdateSuccess])
   let handleSubmit = () => {
+    setVisible(true);
     dispatch({
       type: SHOW_LOADING,
     })
@@ -167,7 +168,7 @@ const Company = () => {
           <CFormLabel>Email*</CFormLabel>
           <CFormInput
             type="text"
-            validations={[required]}
+            validations={visible ? [required]:[]}
             disabled
             onChange={(e) =>
               setCompanyInfo({ ...companyInfo, ...{ email: e.target.value } })
@@ -245,15 +246,15 @@ const Company = () => {
             name="color"
             options={options}
             value={options.filter(
-              (option) => option.value === companyInfo.county
+              (option) => option.value === companyInfo.country
             )}
             onChange={(e) => {
-              setCompanyInfo({ ...companyInfo, ...{ county: e.value } });
+              setCompanyInfo({ ...companyInfo, ...{ country: e.value } });
             }}
           />
-          {validate("TEXT", "Country", companyInfo.county) != "" && (
+          {validate("TEXT", "Country", companyInfo.country) != "" && (
             <CFormLabel className="form_field_error">
-              {validate("TEXT", "Country", companyInfo.county)}
+              {validate("TEXT", "Country", companyInfo.country)}
             </CFormLabel>
           )}
         </CCol>

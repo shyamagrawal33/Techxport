@@ -181,10 +181,10 @@ ApiServices.updateCompany = (data) => {
   formData.append('address', data.address)
   formData.append('city', data.city)
   formData.append('state', data.state)
-  formData.append('county', data.county)
+  formData.append('country', data.country)
   formData.append('pincode', data.pincode)
-  formData.append('pancard', data.pancard)
-  formData.append('gstno', data.gstno)
+  // formData.append('pancard', data.pancard)
+  // formData.append('gstno', data.gstno)
   const user = JSON.parse(localStorage.getItem('user'))
 
   return axios.post(API_URL + 'company/info', formData, {

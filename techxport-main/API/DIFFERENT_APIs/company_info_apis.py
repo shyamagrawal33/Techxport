@@ -47,7 +47,7 @@ def get_company_info_api(token: str = Header("token")):
             'city': existing_user['City'],
             'state': existing_user['State'],
             'pincode': existing_user['Pincode'],
-            'county': existing_user['County'],
+            'country': existing_user['Country'],
             'pancard': existing_user['Pancard'],
             'gstno': existing_user['Gstno']
         }
@@ -56,14 +56,56 @@ def get_company_info_api(token: str = Header("token")):
             'StatusCode': 1
         }
     else:
-        return {
-            'Status': 'No Such User Exist',
-            'StatusCode': 0
+        company_detail = {
+            'company_name': "",
+            'iec_code': "",
+            'email': mail_id,
+            'mobile': "",
+            'address': "",
+            'city': "",
+            'state': "",
+            'pincode': "",
+            'country': "",
+            'pancard': "",
+            'gstno': ""
         }
+        return {
+            'company_detail': company_detail,
+            'StatusCode': 1
+        }
+        # return {
+        #     'Status': 'No Such User Exist',
+        #     'StatusCode': 0
+        # }
 
 
 @company_info_related_apis_obj.post(company_info_route_path)
-def company_info_api(company_name: str = Form(...), iec_code: str = Form(...), mobile: str = Form(...), address: str = Form(...), city: str = Form(...), state: str = Form(...), county: str = Form(...), pincode: str = Form(...), pancard: UploadFile = File(...), gstno: UploadFile = File(...), token: str = Header("token")):
+def company_info_api(
+    # email: str = Form(default=''),
+    company_name: str = Form(default=''),
+    iec_code: str = Form(default=''),
+    mobile: str = Form(default=''),
+    address: str = Form(default=''),
+    city: str = Form(default=''),
+    state: str = Form(default=''),
+    country: str = Form(default=''),
+    pincode: str = Form(default=''),
+    # pancard: UploadFile = File(...),
+    # gstno: UploadFile = File(...), 
+    token: str = Header("token")):
+
+    # email = email or ''
+    company_name = company_name or ''
+    iec_code = iec_code or ''
+    mobile = mobile or ''
+    address = address or ''
+    city = city or ''
+    state = state or ''
+    country = country or ''
+    pincode = pincode or ''
+
+    # pancard_data = pancard.file.read() if pancard else b''
+    # gstno_data = gstno.file.read() if gstno else b''
 
     token_data = utilities.decode_jwt(token)
     if token_data['StatusCode'] == 0:
@@ -103,30 +145,32 @@ def company_info_api(company_name: str = Form(...), iec_code: str = Form(...), m
     existing_user = db['company_info'].find_one(
         {"Email": mail_id})
 
-    try:
-        aws_gst_doc_path = f"/gst_folder/{username}/{gstno.filename}"
-        with open(os.getcwd() + aws_gst_doc_path, "wb") as f:
-            f.write(gstno.file.read())
+    # try:
+    #     aws_gst_doc_path = f"/gst_folder/{username}/{gstno.filename}"
+    #     with open(os.getcwd() + aws_gst_doc_path, "wb") as f:
+    #         f.write(gstno.file.read())
 
-        # print(os.getcwd() + aws_gst_doc_path)
-        res = upload_to_aws(aws_gst_doc_path)
-        if res['StatusCode'] == 1:
-            os.remove(os.getcwd() + aws_gst_doc_path)
-    except:
-        pass
+    #     # print(os.getcwd() + aws_gst_doc_path)
+    #     res = upload_to_aws(aws_gst_doc_path)
+    #     if res['StatusCode'] == 1:
+    #         os.remove(os.getcwd() + aws_gst_doc_path)
+    # except:
+    #     pass
 
-    try:
-        aws_pan_doc_path = f"/pan_folder/{username}/{pancard.filename}"
-        with open(os.getcwd() + aws_pan_doc_path, "wb") as f:
-            f.write(pancard.file.read())
+    # try:
+    #     aws_pan_doc_path = f"/pan_folder/{username}/{pancard.filename}"
+    #     with open(os.getcwd() + aws_pan_doc_path, "wb") as f:
+    #         f.write(pancard.file.read())
 
-        # print(os.getcwd() + aws_pan_doc_path)
-        res = upload_to_aws(aws_pan_doc_path)
-        if res['StatusCode'] == 1:
-            os.remove(os.getcwd() + aws_pan_doc_path)
-    except:
-        pass
+    #     # print(os.getcwd() + aws_pan_doc_path)
+    #     res = upload_to_aws(aws_pan_doc_path)
+    #     if res['StatusCode'] == 1:
+    #         os.remove(os.getcwd() + aws_pan_doc_path)
+    # except:
+    #     pass
 
+    aws_pan_doc_path = "/fakepath"
+    aws_gst_doc_path = "/fakepath"
     if existing_user:
         client = pymongo.MongoClient(mongo_uri)
         db = client["techxport"]
@@ -143,7 +187,7 @@ def company_info_api(company_name: str = Form(...), iec_code: str = Form(...), m
                 'City': city,
                 'State': state,
                 'Pincode': pincode,
-                'County': county,
+                'Country': country,
                 'Pancard': aws_pan_doc_path,
                 'Gstno': aws_gst_doc_path
             }
@@ -167,7 +211,7 @@ def company_info_api(company_name: str = Form(...), iec_code: str = Form(...), m
             'City': city,
             'State': state,
             'Pincode': pincode,
-            'County': county,
+            'Country': country,
             'Pancard': aws_pan_doc_path,
             'Gstno': aws_gst_doc_path
         }
