@@ -31,6 +31,8 @@ const ExportCreateFile = () => {
   console.log(data);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [countries, setCountries] = useState([]);
+  const [ports, setPorts] = useState([]);
   const [masterFormData, setMasterFormData] = useState([
     [
       {
@@ -102,7 +104,7 @@ const ExportCreateFile = () => {
                 value: "exw",
               },
               {
-                label: ",FAS (Free Alongside Ship)",
+                label: "FAS (Free Alongside Ship)",
                 value: "fas",
               },
               {
@@ -145,20 +147,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
             optionfrom: "contactAPI",
           },
           {
@@ -166,20 +155,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
             optionfrom: "contactAPI",
           },
           {
@@ -212,20 +188,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: ports,
             optionfrom: "contactAPI",
           },
           {
@@ -233,20 +196,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: ports,
             optionfrom: "contactAPI",
           },
           {
@@ -284,20 +234,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
             optionfrom: "contactAPI",
           },
         ],
@@ -385,7 +322,7 @@ const ExportCreateFile = () => {
                 value: "exw",
               },
               {
-                label: ",FAS (Free Alongside Ship)",
+                label: "FAS (Free Alongside Ship)",
                 value: "fas",
               },
               {
@@ -430,20 +367,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
             optionfrom: "contactAPI",
           },
           {
@@ -451,20 +375,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
             optionfrom: "contactAPI",
           },
         ],
@@ -499,20 +410,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: ports,
             optionfrom: "contactAPI",
           },
         ],
@@ -522,20 +420,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: ports,
             optionfrom: "contactAPI",
           },
           {
@@ -579,20 +464,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
             optionfrom: "contactAPI",
           },
         ],
@@ -891,7 +763,7 @@ const ExportCreateFile = () => {
                 value: "exw",
               },
               {
-                label: ",FAS (Free Alongside Ship)",
+                label: "FAS (Free Alongside Ship)",
                 value: "fas",
               },
               {
@@ -1011,20 +883,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: ports,
             optionfrom: "contactAPI",
           },
         ],
@@ -1034,20 +893,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: ports,
             optionfrom: "contactAPI",
           },
           {
@@ -1055,20 +901,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
             optionfrom: "contactAPI",
           },
         ],
@@ -1078,20 +911,7 @@ const ExportCreateFile = () => {
             type: "select",
             value: "",
             placeholder: "Find or add a contact",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
             optionfrom: "contactAPI",
           },
           {
@@ -1189,7 +1009,7 @@ const ExportCreateFile = () => {
                 value: "exw",
               },
               {
-                label: ",FAS (Free Alongside Ship)",
+                label: "FAS (Free Alongside Ship)",
                 value: "fas",
               },
               {
@@ -1231,20 +1051,7 @@ const ExportCreateFile = () => {
             label: "Country of Destination*",
             type: "select",
             value: "",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
           },
         ],
         [
@@ -1252,20 +1059,7 @@ const ExportCreateFile = () => {
             label: "Origin of Goods*",
             type: "select",
             value: "",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
           },
           {
             label: "Mode of Transport*",
@@ -1296,39 +1090,13 @@ const ExportCreateFile = () => {
             label: "Port of Loading*",
             type: "select",
             value: "",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: ports,
           },
           {
             label: "Port of Discharge*",
             type: "select",
             value: "",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: ports,
           },
         ],
         [
@@ -1341,20 +1109,7 @@ const ExportCreateFile = () => {
             label: "Country of Final Destination*",
             type: "select",
             value: "",
-            options: [
-              {
-                label: "abcd",
-                value: "abcd",
-              },
-              {
-                label: "efgh",
-                value: "efgh",
-              },
-              {
-                label: "ijkl",
-                value: "ijkl",
-              },
-            ],
+            options: countries,
           },
         ],
         [
@@ -1481,9 +1236,37 @@ const ExportCreateFile = () => {
     },
   ]);
 
+  useEffect(() => {
+    ApiServices.getCountries().then((countriesResponse) => {
+      if (countriesResponse?.data?.StatusCode !== 0) {
+        setCountries(countriesResponse?.data?.countries)
+      }
+    }).catch((error) => {
+      Common.getErrors(error, dispatch, navigate)
+    })
+    ApiServices.getPorts().then((portsResponse) => {
+      console.log("porres",portsResponse)
+      if (portsResponse?.data?.StatusCode !== 0) {
+        setPorts(portsResponse?.data?.ports)
+        console.log("master",masterFormData)
+      }
+    }).catch((error) => {
+      Common.getErrors(error, dispatch, navigate)
+    })
+  }, [])
+
   let index = otherFormsData.findIndex((el) => {
     return el?.type == data.id.value.toUpperCase();
   });
+
+  const getOptions = (label) => {
+    console.log("labeler", label)
+    if(label.toLowerCase().includes("port")) {
+      return ports;
+    } else if(label.toLowerCase().includes("country") || label.toLowerCase().includes("origin")) {
+      return countries;
+    }
+  }
 
   return (
     <CRow className="main-form-row">
@@ -1609,7 +1392,7 @@ const ExportCreateFile = () => {
                                           setMasterFormData(formD);
                                         }}
                                         defaultValue={el3.value}
-                                        options={el3.options}
+                                        options={el3.options.length!=0?el3.options:getOptions(el3.label)}
                                       />
                                     )}
                                     {el3.type == "date" && (

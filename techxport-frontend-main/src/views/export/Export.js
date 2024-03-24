@@ -20,7 +20,13 @@ import Select from 'react-select'
 import { Button } from 'primereact/button'
 import { TriStateCheckbox } from 'primereact/tristatecheckbox'
 import { useNavigate } from 'react-router-dom'
+import ApiServices from 'src/services/apiservices'
 const Export = () => {
+  const [forms, setForms] = useState([]);
+  const [selectedForm, setSelectedForm] = useState([]);
+  const [selectedFormType, setSelectedFormType] = useState([
+    { id: 1, value: 'Master File', label: 'Master File' },
+  ])
   const [visible, setVisible] = useState(false)
   const [filter, setVisibleFilter] = useState(false)
   const [create, setCreate] = useState(false)
@@ -146,6 +152,17 @@ const Export = () => {
     { id: 3, value: 'Sales Contract', label: 'Sales Contract' },
     { id: 4, value: 'Packing List', label: 'Packing List' },
   ]
+
+  useEffect(() => {
+    ApiServices.getForms().then((response) => {
+      console.log('forms response', response)
+      setForms(response?.data?.forms_details);
+    })
+      .catch((error) => {
+        Common.getErrors(error, dispatch, navigate)
+      })
+  }, [])
+
   let createSearchParams = (type = 'NEW', id = 0, prevdata = null) => {
     let data = {
       data: selectedshipmentType,
@@ -257,14 +274,14 @@ const Export = () => {
                 </CRow>
               )}
               <DataTable
-                value={shipment}
+                value={forms}
                 paginator={shipment.length > 0}
                 rows={5}
                 rowsPerPageOptions={[5, 10, 25, 50]}
                 // selectionMode={rowClick ? null : 'checkbox'}
                 selectionMode={'checkbox'}
-                selection={selectedShipment}
-                onSelectionChange={(e) => setSelectedShipment(e.value)}
+                selection={selectedForm}
+                onSelectionChange={(e) => setSelectedForm(e.value)}
                 dataKey="id"
                 tableStyle={{ minWidth: '50rem' }}
               >

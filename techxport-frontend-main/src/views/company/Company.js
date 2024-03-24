@@ -40,12 +40,7 @@ const required = (value, visible) => {
 const Company = () => {
   const [visible, setVisible] = useState(false)
   const dispatch = useDispatch()
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-    { value: 'hindustan', label: 'Hindustan' },
-  ]
+  const [countries, setCountries] = useState([]);
   const { isInvalidToken, isLoggedIn, UpdateSuccess } = useSelector((state) => state.auth)
   const [dataLoad, setDataLoad] = useState(false)
   const [companyInfo, setCompanyInfo] = useState({
@@ -84,6 +79,16 @@ const Company = () => {
       .catch((error) => {
         Common.getErrors(error, dispatch, navigate)
       })
+
+    ApiServices.getCountries()
+    .then((response) => {
+      if (response?.data?.StatusCode !== 0) {
+        setCountries(response?.data?.countries)
+      }
+    })
+    .catch((error) => {
+      Common.getErrors(error, dispatch, navigate)
+    })
   }
   useEffect(() => {
     getData()
@@ -235,7 +240,7 @@ const Company = () => {
           <Select
             className="basic-single"
             classNamePrefix="select"
-            defaultValue={options.filter(
+            defaultValue={countries?.filter(
               (option) => option.value === companyInfo.count
             )}
             isDisabled={false}
@@ -244,8 +249,8 @@ const Company = () => {
             isRtl={false}
             isSearchable={true}
             name="color"
-            options={options}
-            value={options.filter(
+            options={countries}
+            value={countries?.filter(
               (option) => option.value === companyInfo.country
             )}
             onChange={(e) => {

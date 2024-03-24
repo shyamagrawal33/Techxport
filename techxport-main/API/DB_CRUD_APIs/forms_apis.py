@@ -11,15 +11,33 @@ def getForms(token: str = Header("token")):
     token_data = utilities.decode_jwt(token)
     if token_data['StatusCode'] == 0:
         return token_data
+    
+    mail_id = token_data["user_mail_id"]
     client = pymongo.MongoClient(mongo_uri)
     db = client["techxport"]
-    forms_data = db['forms_data'].find_one({},{"_id":0})
+    existing_user = db['user_info'].find_one(
+        {"Email": mail_id})
+    
+    if existing_user:
+        forms_data = db['forms_data'].find(
+            {"mail_id": mail_id})
 
-    if forms_data:
+        final_forms_list = []
+        for j in forms_data:
+            product_detail = {
+                'id': str(j["_id"]),
+                "hc_code": j['product_data']["hc_code"],
+                "description": j['product_data']["description"],
+                "unit_of_measurement": j['product_data']["unit_of_measurement"],
+                "net_weight": j['product_data']["net_weight"],
+                "gross_weight": j['product_data']["gross_weight"],
+                "number_of_packages": j['product_data']["number_of_packages"],
+                "optionalField": j['product_data']["optionalField"]
+            }
+            final_forms_list.append(product_detail)
         return {
-            'Status': 'Success',
-            'StatusCode': 1,
-            'forms_data': forms_data
+            'forms_details': final_forms_list,
+            'StatusCode': 1
         }
     else:
         return {

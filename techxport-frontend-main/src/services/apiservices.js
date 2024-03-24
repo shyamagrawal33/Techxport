@@ -264,4 +264,26 @@ ApiServices.getForms = () => {
     },
   });
 };
+
+// Countries endpoints
+ApiServices.getCountries = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  return axios.get(API_URL + "countries", {
+    headers: {
+      "content-type": "application/json",
+      token: `${user.token}`,
+    }
+  })
+}
+
+// Ports endpoints
+ApiServices.getPorts = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  return axios.get(API_URL + "ports", {
+    headers: {
+      "content-type": "application/json",
+      token: `${user.token}`,
+    }
+  })
+}
 export default ApiServices

@@ -279,14 +279,17 @@ def get_all_countries_api(token: str = Header("token")):
 
     all_countries = list(pycountry.countries)
 
-    country_names = [country.name for country in all_countries]
+    country_names = []
+    for country in all_countries:
+        country_names.append({
+            "label": country.name,
+            "value": country.alpha_2
+        })
 
     return {
-        'country_names': country_names,
+        'countries': country_names,
         'StatusCode': 1
     }
-
-
 
 @dropdown_specific_apis_obj.get('/country/states')
 def get_specific_group_of_states_api(country_name: str, token: str = Header("token")):
@@ -324,3 +327,27 @@ def get_specific_group_of_states_api(country_name: str, token: str = Header("tok
             'Status': 'No Country was provided in input.',
             'StatusCode': 0
         }
+    
+@dropdown_specific_apis_obj.get('/ports')
+def get_all_ports_api(token: str = Header("token")):
+    # print(token)
+    token_data = utilities.decode_jwt(token)
+    if token_data['StatusCode'] == 0:
+        return token_data
+    client = pymongo.MongoClient(mongo_uri)
+    db = client["techxport"]
+    port_details = db['ports'].find()
+
+    final_ports_list = []
+    for j in port_details:
+        final_ports_list.append({
+            "label": j["label"]+", "+j["city"]+", "+j["state"],
+            "value": j["value"],
+            "city": j["city"],
+            "state": j["state"]
+        })
+
+    return {
+        'ports': final_ports_list,
+        'StatusCode': 1
+    }
