@@ -1257,9 +1257,9 @@ const ExportCreateFile = () => {
   });
 
   const getOptions = (label) => {
-    if(label.toLowerCase().includes("port")) {
+    if (label.toLowerCase().includes("port")) {
       return ports;
-    } else if(label.toLowerCase().includes("country") || label.toLowerCase().includes("origin")) {
+    } else if (label.toLowerCase().includes("country") || label.toLowerCase().includes("origin")) {
       return countries;
     }
   }
@@ -1388,7 +1388,7 @@ const ExportCreateFile = () => {
                                           setMasterFormData(formD);
                                         }}
                                         defaultValue={el3.value}
-                                        options={el3.options.length!=0?el3.options:getOptions(el3.label)}
+                                        options={el3.options.length != 0 ? el3.options : getOptions(el3.label)}
                                       />
                                     )}
                                     {el3.type == "date" && (
@@ -1397,7 +1397,6 @@ const ExportCreateFile = () => {
                                         placeholder={el3.placeholder}
                                       ></CFormInput>
                                     )}
-
                                     {el3.extraInput && (
                                       <CFormInput
                                         type="text"
@@ -1437,16 +1436,102 @@ const ExportCreateFile = () => {
                   <CRow key={index}>
                     {el.map((el1, index1) => {
                       return (
-                        <CCol xs={12} lg={6} xl={6} key={index1}>
-                          <CFormLabel>{el1.label}</CFormLabel>
-                          <CFormInput
-                            placeholder={el1.placeholder}
-                            value={el1.value}
-                            onChange={(e) => {
-                              updateData(0, e.target.value);
+                        <CCol
+                          xs={12}
+                          lg={6}
+                          xl={6}
+                          key={index1 + "" + 1}
+                        >
+                          <CFormLabel
+                            style={{
+                              fontSize: 12,
+                              display: "flex",
+                              justifyContent: "space-between",
                             }}
-                            type={el1.type}
-                          ></CFormInput>
+                          >
+                            {el1.label}
+                            {el1.needRadio && (
+                              <>
+                                <div style={{ display: "flex" }}>
+                                  {el1.radioOption.map((ell, index) => {
+                                    return (
+                                      <>
+                                        <div style={{ marginLeft: 10 }}>
+                                          <input
+                                            type="radio"
+                                            name="flexRadioDefault"
+                                            id={
+                                              "flexRadioDefault" + index
+                                            }
+                                          />
+                                          <label
+                                            htmlFor="flexRadioDefault1"
+                                            style={{ marginLeft: 5 }}
+                                          >
+                                            {ell.value}
+                                          </label>
+                                        </div>
+                                      </>
+                                    );
+                                  })}
+                                </div>
+                              </>
+                            )}
+                          </CFormLabel>
+
+                          <div>
+                            {el1.type == "text" && (
+                              <CFormInput
+                                placeholder={el1.placeholder}
+                              ></CFormInput>
+                            )}
+                            {el1.type == "select" && (
+                              <Select
+                                className="basic-single"
+                                classNamePrefix="select"
+                                isDisabled={false}
+                                isLoading={false}
+                                isClearable={false}
+                                isRtl={false}
+                                isSearchable={true}
+                                name="color"
+                                placeholder={
+                                  <div>{el1.placeholder}</div>
+                                }
+                                onChange={(e) => {
+                                  let formD = [...masterFormData];
+                                  formD[index1][index2].value[
+                                    index1
+                                  ].value = e.value;
+                                  formD[index1][index2].value[
+                                    index1
+                                  ].extraInput.isDisabled =
+                                    e.value == "Yes" ? false : true;
+                                  setMasterFormData(formD);
+                                }}
+                                defaultValue={el1.value}
+                                options={el1.options.length != 0 ? el1.options : getOptions(el1.label)}
+                              />
+                            )}
+                            {el1.type == "date" && (
+                              <CFormInput
+                                type="date"
+                                placeholder={el1.placeholder}
+                              ></CFormInput>
+                            )}
+                            {el1.extraInput && (
+                              <CFormInput
+                                type="text"
+                                placeholder={el1.placeholder}
+                                style={{ marginTop: 10 }}
+                                disabled={
+                                  masterFormData[index1][index2].value[
+                                    index1
+                                  ].extraInput.isDisabled
+                                }
+                              ></CFormInput>
+                            )}
+                          </div>
                         </CCol>
                       );
                     })}
@@ -1470,16 +1555,102 @@ const ExportCreateFile = () => {
                   <CRow key={index}>
                     {el.map((el1, index1) => {
                       return (
-                        <CCol xs={12} lg={6} xl={6} key={index1}>
-                          <CFormLabel>{el1.label}</CFormLabel>
-                          <CFormInput
-                            placeholder={el1.placeholder}
-                            value={el1.value}
-                            onChange={(e) => {
-                              updateData(0, e.target.value);
+                        <CCol
+                          xs={12}
+                          lg={6}
+                          xl={6}
+                          key={index1 + "" + 1}
+                        >
+                          <CFormLabel
+                            style={{
+                              fontSize: 12,
+                              display: "flex",
+                              justifyContent: "space-between",
                             }}
-                            type={el1.type}
-                          ></CFormInput>
+                          >
+                            {el1.label}
+                            {el1.needRadio && (
+                              <>
+                                <div style={{ display: "flex" }}>
+                                  {el1.radioOption.map((ell, index) => {
+                                    return (
+                                      <>
+                                        <div style={{ marginLeft: 10 }}>
+                                          <input
+                                            type="radio"
+                                            name="flexRadioDefault"
+                                            id={
+                                              "flexRadioDefault" + index
+                                            }
+                                          />
+                                          <label
+                                            htmlFor="flexRadioDefault1"
+                                            style={{ marginLeft: 5 }}
+                                          >
+                                            {ell.value}
+                                          </label>
+                                        </div>
+                                      </>
+                                    );
+                                  })}
+                                </div>
+                              </>
+                            )}
+                          </CFormLabel>
+
+                          <div>
+                            {el1.type == "text" && (
+                              <CFormInput
+                                placeholder={el1.placeholder}
+                              ></CFormInput>
+                            )}
+                            {el1.type == "select" && (
+                              <Select
+                                className="basic-single"
+                                classNamePrefix="select"
+                                isDisabled={false}
+                                isLoading={false}
+                                isClearable={false}
+                                isRtl={false}
+                                isSearchable={true}
+                                name="color"
+                                placeholder={
+                                  <div>{el1.placeholder}</div>
+                                }
+                                onChange={(e) => {
+                                  let formD = [...masterFormData];
+                                  formD[index1][index2].value[
+                                    index1
+                                  ].value = e.value;
+                                  formD[index1][index2].value[
+                                    index1
+                                  ].extraInput.isDisabled =
+                                    e.value == "Yes" ? false : true;
+                                  setMasterFormData(formD);
+                                }}
+                                defaultValue={el1.value}
+                                options={el1.options.length != 0 ? el1.options : getOptions(el1.label)}
+                              />
+                            )}
+                            {el1.type == "date" && (
+                              <CFormInput
+                                type="date"
+                                placeholder={el1.placeholder}
+                              ></CFormInput>
+                            )}
+                            {el1.extraInput && (
+                              <CFormInput
+                                type="text"
+                                placeholder={el1.placeholder}
+                                style={{ marginTop: 10 }}
+                                disabled={
+                                  masterFormData[index1][index2].value[
+                                    index1
+                                  ].extraInput.isDisabled
+                                }
+                              ></CFormInput>
+                            )}
+                          </div>
                         </CCol>
                       );
                     })}
@@ -1503,16 +1674,102 @@ const ExportCreateFile = () => {
                   <CRow key={index}>
                     {el.map((el1, index1) => {
                       return (
-                        <CCol xs={12} lg={6} xl={6} key={index1}>
-                          <CFormLabel>{el1.label}</CFormLabel>
-                          <CFormInput
-                            placeholder={el1.placeholder}
-                            value={el1.value}
-                            onChange={(e) => {
-                              updateData(0, e.target.value);
+                        <CCol
+                          xs={12}
+                          lg={6}
+                          xl={6}
+                          key={index1 + "" + 1}
+                        >
+                          <CFormLabel
+                            style={{
+                              fontSize: 12,
+                              display: "flex",
+                              justifyContent: "space-between",
                             }}
-                            type={el1.type}
-                          ></CFormInput>
+                          >
+                            {el1.label}
+                            {el1.needRadio && (
+                              <>
+                                <div style={{ display: "flex" }}>
+                                  {el1.radioOption.map((ell, index) => {
+                                    return (
+                                      <>
+                                        <div style={{ marginLeft: 10 }}>
+                                          <input
+                                            type="radio"
+                                            name="flexRadioDefault"
+                                            id={
+                                              "flexRadioDefault" + index
+                                            }
+                                          />
+                                          <label
+                                            htmlFor="flexRadioDefault1"
+                                            style={{ marginLeft: 5 }}
+                                          >
+                                            {ell.value}
+                                          </label>
+                                        </div>
+                                      </>
+                                    );
+                                  })}
+                                </div>
+                              </>
+                            )}
+                          </CFormLabel>
+
+                          <div>
+                            {el1.type == "text" && (
+                              <CFormInput
+                                placeholder={el1.placeholder}
+                              ></CFormInput>
+                            )}
+                            {el1.type == "select" && (
+                              <Select
+                                className="basic-single"
+                                classNamePrefix="select"
+                                isDisabled={false}
+                                isLoading={false}
+                                isClearable={false}
+                                isRtl={false}
+                                isSearchable={true}
+                                name="color"
+                                placeholder={
+                                  <div>{el1.placeholder}</div>
+                                }
+                                onChange={(e) => {
+                                  let formD = [...masterFormData];
+                                  formD[index1][index2].value[
+                                    index1
+                                  ].value = e.value;
+                                  formD[index1][index2].value[
+                                    index1
+                                  ].extraInput.isDisabled =
+                                    e.value == "Yes" ? false : true;
+                                  setMasterFormData(formD);
+                                }}
+                                defaultValue={el1.value}
+                                options={el1.options.length != 0 ? el1.options : getOptions(el1.label)}
+                              />
+                            )}
+                            {el1.type == "date" && (
+                              <CFormInput
+                                type="date"
+                                placeholder={el1.placeholder}
+                              ></CFormInput>
+                            )}
+                            {el1.extraInput && (
+                              <CFormInput
+                                type="text"
+                                placeholder={el1.placeholder}
+                                style={{ marginTop: 10 }}
+                                disabled={
+                                  masterFormData[index1][index2].value[
+                                    index1
+                                  ].extraInput.isDisabled
+                                }
+                              ></CFormInput>
+                            )}
+                          </div>
                         </CCol>
                       );
                     })}
