@@ -38,7 +38,6 @@ export default function CreateContact() {
   const navigate = useNavigate();
   const search = useLocation().search;
   const data = JSON.parse(atob(search.substring(1)));
-  console.log("this is data", data);
   useEffect(() => {
     if (data.prevdata) setNewContact(data.prevdata);
   }, []);
@@ -81,7 +80,6 @@ export default function CreateContact() {
     dispatch({
       type: SHOW_LOADING,
     });
-    console.log('newwwwww', newContact)
     ApiServices.updateContact(newContact)
       .then((response) => {
         dispatch({

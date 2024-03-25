@@ -17,16 +17,6 @@ const ApiServices = {}
 const API_URL = 'http://localhost:5000/'
 // const API_URL = 'https://5c75-2409-40d4-2b-911b-2ed7-6d28-4ce5-4205.ngrok-free.app/'
 AuthInterceptor()
-// ApiServices.getList = () => {
-//   console.log(AuthService.authHeader())
-//   fetch(BASE_URL + 'entries', {
-//     method: 'GET',
-//     headers: AuthService.authHeader(),
-//   })
-//     .then((response) => response.json())
-//     .then((json) => console.log(json))
-//     .catch((error) => console.error(error))
-// }
 
 ApiServices.register = (mail_id, password) => {
   return axios.post(API_URL + 'signup', {
@@ -204,7 +194,6 @@ ApiServices.getCompany = (data) => {
   })
 }
 ApiServices.resetPassword = (mail, password, otp) => {
-  console.log(mail, password, otp)
   return axios
     .post(API_URL + 'update/password', {
       mail_id: mail,
@@ -213,7 +202,6 @@ ApiServices.resetPassword = (mail, password, otp) => {
     })
     .then(
       (response) => {
-        console.log(response)
         if (response.data.token) {
           //   localStorage.setItem('user', JSON.stringify(response.data))
           //   AuthService.isLoggedIn = true
@@ -222,7 +210,6 @@ ApiServices.resetPassword = (mail, password, otp) => {
         return response.data
       },
       (error) => {
-        console.log(error)
       },
     )
 }
@@ -243,7 +230,6 @@ ApiServices.login = (mail_id, password) => {
         return response.data
       },
       (error) => {
-        console.log(error)
       },
     )
 }
@@ -255,7 +241,6 @@ ApiServices.logout = () => {
 
 // Forms endpoints
 ApiServices.getForms = () => {
-  console.log('here')
   const user = JSON.parse(localStorage.getItem("user"));
   return axios.get(API_URL + "forms", {
     headers: {

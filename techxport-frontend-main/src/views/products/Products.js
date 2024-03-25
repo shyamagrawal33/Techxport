@@ -56,7 +56,6 @@ export default function Products() {
         dispatch({
           type: HIDE_LOADING,
         })
-        console.log(response)
         if (Common.getErrors(response, dispatch, navigate)) {
           if (response.data.all_product_details.optionlField) {
             response.data.all_product_details.optionlField = JSON.parse(
@@ -82,7 +81,6 @@ export default function Products() {
     })
     ApiServices.createProduct(newProduct)
       .then((response) => {
-        console.log(response)
         dispatch({
           type: HIDE_LOADING,
         })
@@ -102,7 +100,6 @@ export default function Products() {
     })
     ApiServices.updateProduct(newProduct)
       .then((response) => {
-        console.log(response)
         dispatch({
           type: HIDE_LOADING,
         })
@@ -190,7 +187,6 @@ export default function Products() {
         <CModal
           visible={visible}
           onClose={(event) => {
-            console.log(event)
             setVisible(false)
           }}
         >

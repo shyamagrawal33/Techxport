@@ -179,12 +179,10 @@ export default function Contacts() {
   ]
   let handleConfirm = (type, btnClick) => {
     if (btnClick === modalData.button1 && type == 'Delete') {
-      //   console.log(selectedProducts)
       let request = []
       selectedProducts.forEach((el) => {
         request.push(el.id)
       })
-      //   console.log(udata)
       //   setProducts(udata)
       deleteContact(request)
     }
@@ -210,7 +208,6 @@ export default function Contacts() {
           })
           if (typeof products[index].optionalField == 'string')
             products[index].optionalField = JSON.parse(products[index].optionalField)
-          //   console.log(products[index])
           navigate({
             pathname: '/default/createcontact',
             search: createSearchParams('OLD', products[index].id, products[index]),
@@ -225,7 +222,6 @@ export default function Contacts() {
         <CModal
           visible={visible}
           onClose={(event) => {
-            console.log(event)
             setVisible(false)
           }}
         >

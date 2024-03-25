@@ -3,24 +3,15 @@ import 'core-js'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
-import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
 import store from './store'
-// import "bootstrap/scss/bootstrap.scss";
 import './assets/scss/paper-kit.scss?v=1.3.0'
 import './assets/demo/demo.css?v=1.3.0'
 import 'primereact/resources/themes/lara-light-indigo/theme.css' // theme
-import 'primereact/resources/primereact.css' // core css
-// import 'primeicons/primeicons.css' // icons
-// import 'primeflex/primeflex.css'
+import 'primereact/resources/primereact.css'
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <App />
   </Provider>,
 )
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals()

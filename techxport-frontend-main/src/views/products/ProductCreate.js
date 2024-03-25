@@ -28,11 +28,9 @@ import { getCountry } from 'src/action/auth'
 export default function ProductCreate() {
   const search = useLocation().search
   const data = JSON.parse(atob(search.substring(1)))
-  console.log(data)
   useEffect(() => {
     if (data.prevdata) setNewProduct(data.prevdata)
     getCountryList()
-    console.log(auth)
   }, [])
   const [products, setProducts] = useState([])
   const [selectedProducts, setSelectedProducts] = useState([])
@@ -66,7 +64,6 @@ export default function ProductCreate() {
     })
     ApiServices.createProduct(newProduct)
       .then((response) => {
-        console.log(response)
         dispatch({
           type: HIDE_LOADING,
         })
@@ -88,7 +85,6 @@ export default function ProductCreate() {
     })
     ApiServices.updateProduct(newProduct)
       .then((response) => {
-        console.log(response)
         dispatch({
           type: HIDE_LOADING,
         })
@@ -222,11 +218,9 @@ export default function ProductCreate() {
               {newProduct?.optionalField?.length < 2 && (
                 <div
                   onClick={() => {
-                    console.log('hello')
                     let opt = { ...newProduct }
                     opt?.optionalField.push({ fieldName: '', fieldValue: '' })
                     setNewProduct(opt)
-                    console.log(opt)
                   }}
                 >
                   + Add Optional Field

@@ -61,17 +61,14 @@ function IndexNavbar() {
     }
   }
   let openLogin = () => {
-    console.log(isLoggedIn)
     if (isLoggedIn) {
       dispatch(logout())
-      // isLoggedIn = false
     } else {
       setVisible(true)
       setActiveLink(6)
     }
   }
   React.useEffect(() => {
-    console.log(isLoggedIn, 'fromlogout')
   }, [isLoggedIn])
   React.useEffect(() => {
     const updateNavbarColor = () => {

@@ -28,7 +28,6 @@ import { useDispatch } from "react-redux";
 const ExportCreateFile = () => {
   const search = useLocation().search;
   const data = JSON.parse(atob(search.substring(1)));
-  console.log(data);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [countries, setCountries] = useState([]);
@@ -1245,10 +1244,8 @@ const ExportCreateFile = () => {
       Common.getErrors(error, dispatch, navigate)
     })
     ApiServices.getPorts().then((portsResponse) => {
-      console.log("porres",portsResponse)
       if (portsResponse?.data?.StatusCode !== 0) {
         setPorts(portsResponse?.data?.ports)
-        console.log("master",masterFormData)
       }
     }).catch((error) => {
       Common.getErrors(error, dispatch, navigate)
@@ -1260,7 +1257,6 @@ const ExportCreateFile = () => {
   });
 
   const getOptions = (label) => {
-    console.log("labeler", label)
     if(label.toLowerCase().includes("port")) {
       return ports;
     } else if(label.toLowerCase().includes("country") || label.toLowerCase().includes("origin")) {
@@ -1439,7 +1435,6 @@ const ExportCreateFile = () => {
               {otherFormsData[0].value.map((el, index) => {
                 return (
                   <CRow key={index}>
-                    {console.log({ el })}
                     {el.map((el1, index1) => {
                       return (
                         <CCol xs={12} lg={6} xl={6} key={index1}>

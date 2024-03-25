@@ -6,7 +6,6 @@ function Slideshow(props) {
   Slideshow.propTypes = {
     color: PropTypes.object,
   }
-  // console.log(props.color)
   colors = props.color
   const [index, setIndex] = React.useState(0)
   const timeoutRef = React.useRef(null)

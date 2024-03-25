@@ -41,7 +41,6 @@ const ExportCreate = () => {
     )
   }
   const viewBodyTemplate2 = (product) => {
-    console.log(product)
     return (
       <>
         <Button
@@ -52,7 +51,6 @@ const ExportCreate = () => {
             color: 'black',
           }}
           onClick={(e) => {
-            console.log(product, e)
             op.current.toggle(e)
             let p = []
             if (product.value == 'Master File') {
@@ -96,15 +94,9 @@ const ExportCreate = () => {
         >
           <CIcon icon={cilOptions}></CIcon>
         </Button>
-        {/* {pop == product.id && (
-         
-        )} */}
       </>
     )
   }
-  // const viewSelection = (product) => {
-  //   console.log(product)
-  // }
   let createSearchParams = (id = 0) => {
     let d = {
       id: id,
@@ -121,7 +113,14 @@ const ExportCreate = () => {
     } else if (type == 'Download') {
       alert('Download api will call here')
     } else {
-      alert('delete api will call here')
+      let temp = tabsData.filter((item) => item.id != id.productId)
+      setTabsData(temp);
+      data.data = temp;
+      navigate({
+        pathname: '/default/exportcreate',
+        search: btoa(JSON.stringify(data)),
+      })
+      op.current.toggle(id)
     }
   }
   return (
@@ -136,7 +135,7 @@ const ExportCreate = () => {
         stripedRows
       >
         {/* {viewSelection} */}
-        <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
+        {/* <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column> */}
         <Column field="value" header="Document"></Column>
         <Column header="Date" body={viewBodyTemplate1}></Column>
         <Column
@@ -156,7 +155,7 @@ const ExportCreate = () => {
                   if (el.id == 1) {
                     type = 'Edit'
                   } else if (el.id == 2) {
-                    type = 'Donwload'
+                    type = 'Download'
                   } else {
                     type = 'Delete'
                   }
@@ -171,84 +170,6 @@ const ExportCreate = () => {
         </p>
       </OverlayPanel>
     </>
-
-    // <Tabs style={{ background: 'white', padding: 10, position: 'relative' }}>
-    //   <p
-    //     className="btn"
-    //     onClick={() => {
-    //       navigate(-1)
-    //     }}
-    //   >
-    //     Back
-    //   </p>
-    //   {prevData.id && (
-    //     <p className="btn" style={{ position: 'absolute', right: 0 }}>
-    //       Delete Shipment
-    //     </p>
-    //   )}
-    //   <TabList>
-    //     {tabsData.map((el, index) => {
-    //       return <Tab key={index}>{el.value}</Tab>
-    //     })}
-    //   </TabList>
-    //   {tabsData.map((el, index) => {
-    //     return (
-    //       <TabPanel key={index}>
-    //         <CForm>
-    //           <div
-    //             style={{
-    //               backgroundColor: 'white',
-    //               borderTopLeftRadius: 12,
-    //               borderTopRightRadius: 12,
-    //               padding: '20px 0px 0px 0px',
-    //               textAlign: 'end',
-    //             }}
-    //           >
-    //             <p
-    //               className="btn"
-    //               onClick={() => {
-    //                 console.log('SaveClick')
-    //               }}
-    //             >
-    //               Save
-    //             </p>
-    //             {el.value != 'Master File' && (
-    //               <p
-    //                 className="btn"
-    //                 onClick={() => {
-    //                   console.log('Sync With Master')
-    //                 }}
-    //               >
-    //                 Sync With Master
-    //               </p>
-    //             )}
-    //           </div>
-    //           <CRow>
-    //             {console.log(tabsData, el.data)}
-    //             {tabsData &&
-    //               el?.data?.map((el, index) => {
-    //                 return (
-    //                   <CCol key={index} xs={12} lg={6} xl={4}>
-    //                     <CFormLabel>{el.field}</CFormLabel>
-    //                     <CFormInput value={el.field}></CFormInput>
-    //                   </CCol>
-    //                 )
-    //               })}
-    //             {!el.data &&
-    //               tabsData.map((el, index) => {
-    //                 return (
-    //                   <CCol key={index} xs={12} lg={6} xl={4}>
-    //                     <CFormLabel>Field {index + 1}</CFormLabel>
-    //                     <CFormInput></CFormInput>
-    //                   </CCol>
-    //                 )
-    //               })}
-    //           </CRow>
-    //         </CForm>
-    //       </TabPanel>
-    //     )
-    //   })}
-    // </Tabs>
   )
 }
 export default ExportCreate

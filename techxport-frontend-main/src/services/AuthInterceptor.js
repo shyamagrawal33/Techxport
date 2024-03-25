@@ -13,12 +13,4 @@ export const AuthInterceptor = () => {
       Promise.reject(error)
     },
   )
-  // axios.interceptors.response.use(
-  //   (response) => {
-  //     console.log(response)
-  //   },
-  //   (error) => {
-  //     Promise.reject(error)
-  //   },
-  // )
 }

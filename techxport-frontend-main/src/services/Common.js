@@ -49,7 +49,6 @@ Common.getErrors = (response, dispatch, navigate) => {
       type: HIDE_LOADING,
     })
   } else {
-    console.log(response)
     return true
   }
 }

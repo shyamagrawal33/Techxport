@@ -30,7 +30,6 @@ const AppHeaderDropdown = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log("here");
     dispatch(logout());
     navigate("/");
   };

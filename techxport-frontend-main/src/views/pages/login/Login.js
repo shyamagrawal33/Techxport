@@ -76,7 +76,6 @@ function Login() {
   })
   const { isLoggedIn, gotoVerifyed, refresh, sendType, UpdatePasswordSuccess, resendMail } =
     useSelector((state) => state.auth)
-  useSelector((state) => console.log(state))
   const { message } = useSelector((state) => state.message)
 
   const dispatch = useDispatch()
@@ -103,7 +102,6 @@ function Login() {
         mail_id: loginForm.mail_id,
         otp: '',
       })
-      console.log(verify)
       setShowedPage('Verify Mail')
       setMessage('')
     }
@@ -142,12 +140,10 @@ function Login() {
     }
   }
   let handleRegisterSubmit = (email, password, cpassword) => {
-    console.log(password, cpassword, registerForm)
     // return
     if (password == cpassword) {
       dispatch(register(email, password))
         .then((data) => {
-          console.log(data)
         })
         .catch(() => {
           setMessage(message)
@@ -157,7 +153,6 @@ function Login() {
     }
   }
   let handleOTPSubmit = (email, otp) => {
-    console.log(email, verify)
     dispatch(verifyOtp(email, verify.Otp))
       .then(() => {
         setverifyOtp({
@@ -174,7 +169,6 @@ function Login() {
       })
   }
   let handleResetPassword = (forgot) => {
-    console.log(forgot)
     if (forgot.password == forgot.confirmpassword && forgot.password != '') {
       dispatch(resetPassword(forgot.mail_id, forgot.password, forgot.otp))
         .then(() => {

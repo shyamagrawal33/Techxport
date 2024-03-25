@@ -21,14 +21,12 @@ import logo from 'src/assets/img/favicon.png'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.changeState.sidebarShow)
-  useSelector((state) => console.log(state))
   return (
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>
         <CHeaderToggler
           className="ps-1"
           onClick={() => {
-            console.log(!sidebarShow, sidebarShow)
             dispatch({ type: 'set', sidebarShow: !sidebarShow })
           }}
         >

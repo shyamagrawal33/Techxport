@@ -27,7 +27,6 @@ import AuthService from 'src/services/auth'
 
 // import A from '../services/apiservices'
 export const register = (email, password) => (dispatch) => {
-  console.log(dispatch)
   dispatch({
     type: SHOW_LOADING,
   })
@@ -36,13 +35,11 @@ export const register = (email, password) => (dispatch) => {
       dispatch({
         type: HIDE_LOADING,
       })
-      console.log(response)
       if (response.data.StatusCode == 1) {
         dispatch({
           type: REGISTER_SUCCESS,
         })
       }
-      console.log(response.data.Status)
       dispatch({
         type: SET_MESSAGE,
         payload: response.data.Status,
@@ -70,7 +67,6 @@ export const register = (email, password) => (dispatch) => {
 }
 
 export const verifyOtp = (email, otp) => (dispatch) => {
-  console.log(dispatch)
   dispatch({
     type: SHOW_LOADING,
   })
@@ -186,7 +182,6 @@ export const getState = (country) => (dispatch) => {
 export const resendOtp =
   (mail_id, otp = '', type1) =>
   (dispatch) => {
-    console.log(dispatch)
     dispatch({
       type: SHOW_LOADING,
     })
@@ -229,7 +224,6 @@ export const resendOtp =
 export const login =
   (email, password, showLoader = true) =>
   (dispatch) => {
-    console.log(dispatch)
     dispatch({
       type: SHOW_LOADING,
     })
@@ -238,7 +232,6 @@ export const login =
         dispatch({
           type: HIDE_LOADING,
         })
-        console.log(response, 'response')
         if (response.StatusCode == 1) {
           dispatch({
             type: LOGIN_SUCCESS,
@@ -272,7 +265,6 @@ export const login =
           (error.response && error.response.data && error.response.data.Status) ||
           error.message ||
           error.toString()
-        console.log(error)
         dispatch({
           type: LOGIN_FAIL,
         })
@@ -295,7 +287,6 @@ export const updateCompany = (mail_id, password, otp) => (dispatch) => {
       dispatch({
         type: HIDE_LOADING,
       })
-      console.log(response, 'response')
       if (response.data.StatusCode == 1) {
         dispatch({
           type: UPDATE_COMPANY_SUCCESS,
@@ -362,7 +353,6 @@ export const resetPassword = (mail, otp, password) => (dispatch) => {
       dispatch({
         type: HIDE_LOADING,
       })
-      console.log(response, 'response')
       if (response.StatusCode == 1) {
         dispatch({
           type: UPDATE_PASSWORD_SUCCESS,

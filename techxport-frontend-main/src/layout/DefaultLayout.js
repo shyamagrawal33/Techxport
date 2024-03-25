@@ -12,7 +12,6 @@ const DefaultLayout = () => {
   }, [showloading])
   return (
     <div>
-      {console.log(loading)}
       {loading && (
         <div
           style={{

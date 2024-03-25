@@ -190,7 +190,6 @@ const Export = () => {
     let ship2 = shipType
     ship2[e.target.id].checked = !ship2[e.target.id].checked
     setShipType(ship2)
-    console.log(ship2)
   }
   const options = [
     { value: 'ShipmentId', label: 'Shipment Number' },
@@ -311,7 +310,6 @@ const Export = () => {
             ship2.map((e) => {
               return (e.checked = false)
             })
-            console.log(ship2)
             setShipType(ship2)
           }}
         >

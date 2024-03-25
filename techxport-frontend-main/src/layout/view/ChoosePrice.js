@@ -57,21 +57,16 @@ function ChoosePrice() {
   ])
   let showAnswer = (id, type) => {
     let faq = [...faqQuestions]
-    console.log(faq, faqQuestions, type)
     faq[id].expended = type
     setFaqQuestions(faq)
   }
   let showAnswer2 = (id, type) => {
     let faq = [...faqQuestions]
-    console.log(faq, faqQuestions, type)
     faq[id].expended = type
     setFaqQuestions(faq)
   }
   useEffect(
     (id) => {
-      console.log(faqQuestions)
-      //   console.log(id)
-      // showAnswer()
     },
     [setFaqQuestions],
   )

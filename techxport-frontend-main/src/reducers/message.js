@@ -12,12 +12,10 @@ export default function (state = initialState, action) {
     case CLEAR_MESSAGE:
       return { ...state, message: '' }
     case SHOW_LOADING: {
-      console.log('showLoading')
       return { ...state, showloading: true }
     }
 
     case HIDE_LOADING: {
-      console.log('hideLoading')
       return { ...state, showloading: false }
     }
     default:

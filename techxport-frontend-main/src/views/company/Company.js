@@ -65,13 +65,11 @@ const Company = () => {
           type: HIDE_LOADING,
         })
         setDataLoad(true)
-        console.log({response})
         if (response?.data?.StatusCode !== 0) {
           if (Common.getErrors(response, dispatch, navigate)) {
             setCompanyInfo(response.data.company_detail)
 
             setTimeout(() => {
-              console.log(response.data.company_detail)
             }, 1000)
           }
         }
@@ -117,17 +115,14 @@ const Company = () => {
 
   const navigate = useNavigate()
   useEffect(() => {
-    console.log(isInvalidToken)
     if (isInvalidToken) {
       dispatch(logout())
       setTimeout(() => {
-        console.log(AuthService.isLoggedIn)
         if (!AuthService.isLoggedIn) {
           navigate('/')
         }
       }, 100)
     }
-    // console.log(UpdateSuccess)
     if (UpdateSuccess) {
       alert('company info update success')
     }
@@ -149,7 +144,6 @@ const Company = () => {
         }
       })
       .catch((error) => {
-        console.log(error)
         Common.getErrors(error, dispatch, navigate)
       })
   }
